@@ -1,0 +1,35 @@
+import telebot
+
+from telebot import types
+
+bot = telebot.TeleBot('TOKEN')
+
+
+@bot.message_handler(commands=['start'])
+def main(message):
+    bot.send_message(message.chat.id, 'Добро пожаловать в мою интернет кофейню!')
+
+
+@bot.message_handler(commands=['menu'])
+def menu(message):
+    markup = types.InlineKeyboardMarkup()
+
+    btn1 = types.InlineKeyboardButton('Raf', callback_data='buy')
+    btn2 = types.InlineKeyboardButton('Ice-latte', callback_data='buy')
+    btn3 = types.InlineKeyboardButton('Ice-Raf', callback_data='buy')
+    markup.row(btn1, btn2, btn3)
+
+    btn4 = types.InlineKeyboardButton('Americano', callback_data='buy')
+    btn5 = types.InlineKeyboardButton('Latte', callback_data='buy')
+    btn6 = types.InlineKeyboardButton('Nitro', callback_data='buy')
+    markup.row(btn4, btn5, btn6)
+    bot.reply_to(message, 'Выберите напиток:', reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda callback: True)
+def callback_message(callback):
+    if callback.data == 'buy':
+        bot.send_message(callback.message.chat.id, 'Заказ создан!')
+
+
+bot.polling(none_stop=True)
