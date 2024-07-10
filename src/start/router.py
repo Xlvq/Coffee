@@ -28,7 +28,11 @@ async def menu(qq: CallbackQuery):
         'raf': 'Раф',
         'latte': 'Латте',
         'ais_raf': 'Айс Раф',
-        'ais_latte': 'Айс Латте'
+        'ais_latte': 'Айс Латте',
+        'americano': 'Американо',
+        'cappuccino': 'Капучино',
+        'nitro': 'Нитро',
+        'espresso': 'Эспрессо'
     }.get(qq.data.split("_")[-1])
     logger.debug(f'Клиент <{qq.from_user.full_name}> заказал <{coffee}>')
     await order_notification(coffee, qq.from_user.full_name)
