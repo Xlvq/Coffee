@@ -1,2 +1,5 @@
 venv
 .env
+.pomoyka
+.dockerignore
+loyalty.db
