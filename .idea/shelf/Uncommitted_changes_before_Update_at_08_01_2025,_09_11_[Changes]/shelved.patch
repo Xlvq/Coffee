@@ -1,0 +1,14 @@
+Index: .dockerignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.dockerignore b/.dockerignore
+new file mode 100644
+--- /dev/null	(date 1735953098659)
++++ b/.dockerignore	(date 1735953098659)
+@@ -0,0 +1,4 @@
++.venv
++.env
++.idea
++.pomoyka
